@@ -24,26 +24,7 @@ namespace Vidly.Controllers
         {
             _context.Dispose();
         }
-
-        public ActionResult Random()
-        {
-            var movie = new Movie { Name = "Shrek!" };
-
-            var customers = new List<Customer>
-            {
-                new Customer() { Name = "movie 1" },
-                new Customer() { Name = "movie 2" }
-            };
-
-            var viewModel = new RandomMovieViewModel
-            {
-                Movie = movie,
-                Customers = customers
-            };
-
-            return View(viewModel);
-        }
-
+        
         public ActionResult Index()
         {
             if (User.IsInRole(RoleName.CanManageMovies))

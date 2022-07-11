@@ -1,4 +1,4 @@
-﻿namespace Vidly.Models
+﻿namespace Vidly.ViewModels.AccountViewModels
 {
     public class ExternalLoginListViewModel
     {

@@ -198,6 +198,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
+    <Compile Include="Controllers\Api\NewRentalsController.cs" />
+    <Compile Include="Dtos\RentalDto.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -283,8 +285,17 @@
     <Compile Include="Migrations\202207101739589_UpdatePhoneNumberInUserTable.Designer.cs">
       <DependentUpon>202207101739589_UpdatePhoneNumberInUserTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202207111551310_AddRentalTableToDB.cs" />
+    <Compile Include="Migrations\202207111551310_AddRentalTableToDB.Designer.cs">
+      <DependentUpon>202207111551310_AddRentalTableToDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207111721412_AddNumberAvailableColumnToMovieTable.cs" />
+    <Compile Include="Migrations\202207111721412_AddNumberAvailableColumnToMovieTable.Designer.cs">
+      <DependentUpon>202207111721412_AddNumberAvailableColumnToMovieTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="ViewModels\AccountViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="ViewModels\AccountViewModels\ResetPasswordViewModel.cs" />
@@ -305,7 +316,6 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomersViewModel.cs" />
     <Compile Include="ViewModels\MovieFormViewModel.cs" />
-    <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumen.css" />
@@ -618,6 +628,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207101739589_UpdatePhoneNumberInUserTable.resx">
       <DependentUpon>202207101739589_UpdatePhoneNumberInUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207111551310_AddRentalTableToDB.resx">
+      <DependentUpon>202207111551310_AddRentalTableToDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207111721412_AddNumberAvailableColumnToMovieTable.resx">
+      <DependentUpon>202207111721412_AddNumberAvailableColumnToMovieTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
