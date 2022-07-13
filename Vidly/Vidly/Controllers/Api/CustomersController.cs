@@ -11,7 +11,6 @@ using System.Data.Entity;
 
 namespace Vidly.Controllers.Api
 {
-    // GET /api/customers/1
     public class CustomersController : ApiController
     {
         private ApplicationDbContext _context;
@@ -21,6 +20,7 @@ namespace Vidly.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
+        // GET /api/customers/1
         public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
