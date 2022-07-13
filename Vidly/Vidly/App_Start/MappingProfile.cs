@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AutoMapper;
+using Vidly.Controllers.Api;
 using Vidly.Dtos;
 using Vidly.Models;
 
@@ -18,6 +19,8 @@ namespace Vidly.App_Start
                 .ForMember(m => m.Id, opt => opt.Ignore());
 
             Mapper.CreateMap<Genre, GenreDto>();
+
+            Mapper.CreateMap<Customer, CustomerDto>();
         }
     }
 }
