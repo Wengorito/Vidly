@@ -35,6 +35,7 @@ namespace Vidly.Models
         public Movie()
         {
             DateAdded = DateTime.Today;
+            //NumberAvailable = NumberInStock;
         }
     }
 }

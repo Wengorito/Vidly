@@ -24,15 +24,16 @@ namespace Vidly.Controllers.Api
             var customer = _context.Customers.SingleOrDefault(
                 c => c.Id == rentalDto.CustomerId);
 
-            var movies = _context.Movies.Where(
-                m => rentalDto.MovieIds.Contains(m.Id)).ToList();
+            var movies = _context.Movies
+                .Where(m => rentalDto.MovieIds.Contains(m.Id))
+                .ToList();
 
             foreach (var movie in movies)
             {
                 if (movie.NumberAvailable == 0)
                     return BadRequest("Movie is not available.");
 
-                movie.NumberInStock--;
+                movie.NumberAvailable--;
 
                 var rental = new Rental()
                 {
