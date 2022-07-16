@@ -86,7 +86,10 @@ namespace Vidly.Controllers
             }
 
             if (movie.Id == 0)
+            {
+                movie.NumberAvailable = movie.NumberInStock;
                 _context.Movies.Add(movie);
+            }
             else
             {
                 var movieInDb = _context.Movies.First(m => m.Id == movie.Id);

@@ -68,7 +68,7 @@ namespace Vidly.Controllers.Api
             _context.Movies.Add(movie);
             _context.SaveChanges();
 
-            //movieDto.Id = movie.Id;
+            movieDto.Id = movie.Id;
 
             return Created(new Uri(Request.RequestUri + "/" + movie.Id), movieDto);
         }

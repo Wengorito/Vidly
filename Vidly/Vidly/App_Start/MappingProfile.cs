@@ -17,10 +17,6 @@ namespace Vidly.App_Start
 
             Mapper.CreateMap<MovieDto, Movie>()
                 .ForMember(m => m.Id, opt => opt.Ignore());
-                //.ForMember(
-                //    m => m.NumberAvailable,
-                //    opt => opt.MapFrom(m => m.NumberInStock)
-                    //);
 
             Mapper.CreateMap<Genre, GenreDto>();
 
