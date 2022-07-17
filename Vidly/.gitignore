@@ -3,6 +3,8 @@
 
 readme.md
 
+AppSettings.config
+
 # User-specific files
 *.suo
 *.user
