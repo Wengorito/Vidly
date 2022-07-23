@@ -25,7 +25,6 @@ namespace Vidly.Controllers
             _unitOfWork = unitOfWork;
         }
 
-
         protected override void Dispose(bool disposing)
         {
             _unitOfWork.Dispose();
