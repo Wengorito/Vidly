@@ -27,14 +27,13 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.IsSubscribedToNewsletter)
-        @Html.TextBoxFor(c => c.IsSubscribedToNewsletter, new { @class = "form-control" })
+        @Html.CheckBoxFor(c => c.IsSubscribedToNewsletter)
         @Html.ValidationMessageFor(c => c.IsSubscribedToNewsletter)
     </div>
     @Html.HiddenFor(c => c.Id)
     @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>
 }
-
 
 @section scripts
 {

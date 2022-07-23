@@ -10,16 +10,16 @@ using Vidly.Persistence;
 
 namespace Vidly.Controllers.Api
 {
-    public class NewRentalsController : ApiController
+    public class RentalsController : ApiController
     {
         private IUnitOfWork _unitOfWork;
 
-        public NewRentalsController()
+        public RentalsController()
         {
             _unitOfWork = new UnitOfWork(new ApplicationDbContext());
         }
 
-        public NewRentalsController(IUnitOfWork unitOfWork)
+        public RentalsController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

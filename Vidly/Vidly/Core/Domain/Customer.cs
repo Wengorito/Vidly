@@ -20,5 +20,6 @@ namespace Vidly.Core.Domain
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
         public MembershipType MembershipType { get; set; }
+        //public byte CurrentlyRented { get; set; }
     }
 }

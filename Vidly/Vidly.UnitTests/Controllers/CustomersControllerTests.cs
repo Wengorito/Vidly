@@ -10,20 +10,20 @@ namespace Vidly.UnitTests.Controllers
     [TestFixture]
     public class CustomersControllerTests
     {
+        private Mock<IUnitOfWork> _dbContext;
+
         [SetUp]
         public void Setup()
         {
-
+            _dbContext = new Mock<IUnitOfWork>();
         }
 
         [Test]
         public void Details_CustomerIsNull_ReturnHttpNotFound()
         {
-            var context = new Mock<IUnitOfWork>();
+            _dbContext.Setup(c => c.Customers.GetSingleWithMembershipType(It.IsAny<int>())).Returns((Customer)null);
 
-            context.Setup(c => c.Customers.GetSingleWithMembershipType(It.IsAny<int>())).Returns((Customer)null);
-
-            var controller = new CustomersController(context.Object);
+            var controller = new CustomersController(_dbContext.Object);
 
             var result = controller.Details(1);
 
@@ -33,11 +33,9 @@ namespace Vidly.UnitTests.Controllers
         [Test]
         public void Details_CustomerExists_ReturnView()
         {
-            var context = new Mock<IUnitOfWork>();
+            _dbContext.Setup(c => c.Customers.GetSingleWithMembershipType(It.IsAny<int>())).Returns(new Customer());
 
-            context.Setup(c => c.Customers.GetSingleWithMembershipType(It.IsAny<int>())).Returns(new Customer());
-
-            var controller = new CustomersController(context.Object);
+            var controller = new CustomersController(_dbContext.Object);
 
             var result = controller.Details(1);
 

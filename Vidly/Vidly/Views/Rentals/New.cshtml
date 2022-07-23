@@ -1,7 +1,7 @@
 ﻿@model dynamic
 
 @{
-    ViewBag.Title = "New Rental Form";
+    ViewBag.Title = "New Rental";
 }
 
 <h2>New Rental Form</h2>
@@ -29,6 +29,7 @@
 
     <button class="btn btn-primary">Submit</button>
 </form>
+
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
@@ -81,6 +82,7 @@
                 $("#movie").typeahead("val", "");
 
                 vm.movieIds.push(movie.id);
+                /*prevent adding the same movie multipe times*/
             });
 
             $.validator.addMethod("validCustomer", function() {
@@ -95,7 +97,7 @@
                 submitHandler: function() {
 
                     $.ajax({
-                            url: "/api/newRentals",
+                            url: "/api/rentals",
                             method: "post",
                             data: vm
                         })

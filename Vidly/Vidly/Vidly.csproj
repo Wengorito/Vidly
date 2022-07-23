@@ -218,7 +218,7 @@
     <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
-    <Compile Include="Controllers\Api\NewRentalsController.cs" />
+    <Compile Include="Controllers\Api\RentalsController.cs" />
     <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\RentalDto.cs" />
@@ -609,6 +609,7 @@
     <Content Include="Views\Rentals\New.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <None Include="Views\Customers\ReadOnlyList.cshtml" />
+    <Content Include="Views\Rentals\Return.cshtml" />
     <None Include="Web.Testing.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
