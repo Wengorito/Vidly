@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Vidly.Dtos;
-using Vidly.Models;
 
 namespace Vidly.Controllers.Api
 {

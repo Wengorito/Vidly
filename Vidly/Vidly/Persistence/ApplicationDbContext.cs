@@ -1,8 +1,9 @@
 ﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Vidly.Core.Domain;
 using Vidly.EntityTypeConfigurations;
 
-namespace Vidly.Models
+namespace Vidly.Persistence
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
 

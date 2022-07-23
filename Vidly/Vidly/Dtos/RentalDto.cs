@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Vidly.Dtos;
-using Vidly.Models;
+
 
 namespace Vidly.Dtos
 {

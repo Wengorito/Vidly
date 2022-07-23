@@ -3,30 +3,34 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Vidly.Core;
+using Vidly.Core.Domain;
 using Vidly.Dtos;
-using Vidly.Models;
+using Vidly.Persistence;
 
 namespace Vidly.Controllers.Api
 {
     public class NewRentalsController : ApiController
     {
-        private ApplicationDbContext _context;
+        private IUnitOfWork _unitOfWork;
 
         public NewRentalsController()
         {
-            _context = new ApplicationDbContext();
+            _unitOfWork = new UnitOfWork(new ApplicationDbContext());
+        }
+
+        public NewRentalsController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
         }
 
         // POST /api/rentals
         [HttpPost]
         public IHttpActionResult CreateNewRentals(RentalDto rentalDto)
         {
-            var customer = _context.Customers.SingleOrDefault(
-                c => c.Id == rentalDto.CustomerId);
+            var customer = _unitOfWork.Customers.Get(rentalDto.CustomerId);
 
-            var movies = _context.Movies
-                .Where(m => rentalDto.MovieIds.Contains(m.Id))
-                .ToList();
+            var movies = _unitOfWork.Movies.Find(m => rentalDto.MovieIds.Contains(m.Id));
 
             foreach (var movie in movies)
             {
@@ -42,10 +46,10 @@ namespace Vidly.Controllers.Api
                     DateRented = DateTime.Now
                 };
 
-                _context.Rentals.Add(rental);
+                _unitOfWork.Rentals.Add(rental);
             }
 
-            _context.SaveChanges();
+            _unitOfWork.Complete();
 
             return Ok();
         }

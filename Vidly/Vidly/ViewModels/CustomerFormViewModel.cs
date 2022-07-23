@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Vidly.Models;
+using Vidly.Core.Domain;
 
 namespace Vidly.ViewModels
 {

@@ -10,7 +10,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Vidly.Models;
+using Vidly.Core.Domain;
+using Vidly.Persistence;
 
 namespace Vidly
 {

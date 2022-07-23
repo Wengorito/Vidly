@@ -4,22 +4,31 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Vidly.Models;
+using Vidly.Core;
+using Vidly.Core.Domain;
+using Vidly.Persistence;
 using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
-        private ApplicationDbContext _context;
+        private IUnitOfWork _unitOfWork;
+
         public CustomersController()
         {
-            _context = new ApplicationDbContext();
+            _unitOfWork = new UnitOfWork(new ApplicationDbContext());
         }
+
+        public CustomersController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
 
         protected override void Dispose(bool disposing)
         {
-            _context.Dispose();
+            _unitOfWork.Dispose();
         }
 
         // GET: Customers/Index
@@ -33,7 +42,7 @@ namespace Vidly.Controllers
 
         public ActionResult Details(int id)
         {
-            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
+            var customer = _unitOfWork.Customers.GetSingleWithMembershipType(id);
 
             if (customer == null)
                 return HttpNotFound();
@@ -44,7 +53,7 @@ namespace Vidly.Controllers
         [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
         public ActionResult New()
         {
-            var membershipTypes = _context.MembershipTypes.ToList();
+            var membershipTypes = _unitOfWork.MembershipTypes.GetAll();
 
             var viewModel = new CustomerFormViewModel()
             {
@@ -57,14 +66,14 @@ namespace Vidly.Controllers
         [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
         public ActionResult Edit(int id)
         {
-            var customer = _context.Customers.FirstOrDefault(c => c.Id == id);
+            var customer = _unitOfWork.Customers.Get(id);
 
             if (customer == null)
                 return HttpNotFound();
 
             var viewModel = new CustomerFormViewModel(customer)
             {
-                MembershipTypes = _context.MembershipTypes.ToList()
+                MembershipTypes = _unitOfWork.MembershipTypes.GetAll()
             };
 
             return View("CustomerForm", viewModel);
@@ -79,17 +88,17 @@ namespace Vidly.Controllers
             {
                 var viewModel = new CustomerFormViewModel(customer)
                 {
-                    MembershipTypes = _context.MembershipTypes.ToList()
+                    MembershipTypes = _unitOfWork.MembershipTypes.GetAll()
                 };
 
                 return View("CustomerForm", viewModel);
             }
 
             if (customer.Id == 0)
-                _context.Customers.Add(customer);
+                _unitOfWork.Customers.Add(customer);
             else
             {
-                var customerInDb = _context.Customers.First(c => c.Id == customer.Id);
+                var customerInDb = _unitOfWork.Customers.GetSingleOrThrow(customer.Id);
 
                 customerInDb.Name = customer.Name;
                 customerInDb.Birthdate = customer.Birthdate;
@@ -97,11 +106,9 @@ namespace Vidly.Controllers
                 customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
             }
 
-            _context.SaveChanges();
+            _unitOfWork.Complete();
 
-            var movies = _context.Customers.Include(c => c.MembershipType).ToList();
-
-            return View("List");
+            return RedirectToAction("Index", "Customers");
         }
     }
 }

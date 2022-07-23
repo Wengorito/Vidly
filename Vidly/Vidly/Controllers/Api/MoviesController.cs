@@ -6,26 +6,32 @@ using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
 using Vidly.Dtos;
-using Vidly.Models;
 using System.Data.Entity;
 using Microsoft.Ajax.Utilities;
+using Vidly.Persistence;
+using Vidly.Core;
+using Vidly.Core.Domain;
 
 namespace Vidly.Controllers.Api
 {
     public class MoviesController : ApiController
     {
-        private ApplicationDbContext _context;
+        private IUnitOfWork _unitOfWork;
 
         public MoviesController()
         {
-            _context = new ApplicationDbContext();
+            _unitOfWork = new UnitOfWork(new ApplicationDbContext());
+        }
+
+        public MoviesController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
         }
 
         // GET /api/movies
-
         public IHttpActionResult GetMovies(string query = null)
         {
-            var moviesQuery = _context.Movies.Include(m => m.Genre);
+            var moviesQuery = _unitOfWork.Movies.QueryableWithGenre();
 
             if (!query.IsNullOrWhiteSpace())
             {
@@ -45,7 +51,7 @@ namespace Vidly.Controllers.Api
         // GET /api/movies/1
         public IHttpActionResult GetMovie(int id)
         {
-            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+            var movie = _unitOfWork.Movies.Get(id);
 
             if (movie == null)
                 NotFound();
@@ -65,8 +71,8 @@ namespace Vidly.Controllers.Api
 
             movie.NumberAvailable = movie.NumberInStock;
 
-            _context.Movies.Add(movie);
-            _context.SaveChanges();
+            _unitOfWork.Movies.Add(movie);
+            _unitOfWork.Complete();
 
             movieDto.Id = movie.Id;
 
@@ -81,14 +87,14 @@ namespace Vidly.Controllers.Api
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
+            var movieInDb = _unitOfWork.Movies.Get(id);
 
             if (movieInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
             Mapper.Map(movieDto, movieInDb);
 
-            _context.SaveChanges();
+            _unitOfWork.Complete();
 
             return Ok();
         }
@@ -99,13 +105,13 @@ namespace Vidly.Controllers.Api
         [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
         public IHttpActionResult DeleteMovie(int id)
         {
-            var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
+            var movieInDb = _unitOfWork.Movies.Get(id);
 
             if (movieInDb == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            _context.Movies.Remove(movieInDb);
-            _context.SaveChanges();
+            _unitOfWork.Movies.Remove(movieInDb);
+            _unitOfWork.Complete();
 
             return Ok();
         }

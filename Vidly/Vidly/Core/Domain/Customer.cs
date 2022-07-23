@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
-namespace Vidly.Models
+namespace Vidly.Core.Domain
 {
     public class Customer
     {
@@ -23,6 +20,5 @@ namespace Vidly.Models
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
         public MembershipType MembershipType { get; set; }
-        //public virtual ICollection<Movie> Movies { get; set; }
     }
 }
