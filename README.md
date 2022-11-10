@@ -1,6 +1,6 @@
 # Vidly
 >Video Rental Store Employee Application
-[Demo availabe at Azure App Service]https://vidly20221108140840.azurewebsites.net/
+[Demo availabe at Azure App Service](https://vidly20221108140840.azurewebsites.net/)
 
 ## Table of Contents
 * [General information](#general-information)
