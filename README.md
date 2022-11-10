@@ -1,5 +1,6 @@
-# Project name
->Vidly - Video Rental Store Application
+# Vidly
+>Video Rental Store Employee Application
+[Demo availabe at Azure App Service]https://vidly20221108140840.azurewebsites.net/
 
 ## Table of Contents
 * [General information](#general-information)
@@ -56,7 +57,9 @@ Re-create the DB locally using EF command Update-Database. In case you get an er
 
 You are good to go.
 
-There are two publish profiles: GoDaddy and testing. More to be told soon.
+There are two publish profiles: GoDaddy and testing.
+
+App demo available on Azure as well.
 
 ## Author
-Grzegorz Wengorz Inc.
+Wengorito Inc.

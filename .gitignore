@@ -12,6 +12,9 @@ AppSettings.config
 # Excluding sole folder to facilitate the re-creation of the localDb (as author concluded from self-experience)
 !App_Data/
 
+# Application Secrets
+AppSettings.config
+
 # User-specific files
 *.rsuser
 *.suo
