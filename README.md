@@ -1,5 +1,5 @@
 # Vidly
-**Video Rental Store Employee Application**
+***Video Rental Store Employee Application***
 
 ## Table of Contents
 * [Demo](#demo)
