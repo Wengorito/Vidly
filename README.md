@@ -9,7 +9,7 @@
 * [Author](#author)
 
 ## Demo
->_[App demo at Azure App Service](https://vidly20221108140840.azurewebsites.net/)_
+>_[App deployed to Azure App Service](https://vidly20221108140840.azurewebsites.net/)_
 
 ## General information
 This project has been created following online course The Complete ASP.NET MVC Course by Mosh Hamedani on Udemy in order to get a first grip on that technology.
