@@ -1,5 +1,5 @@
 # Vidly
->Video Rental Store Employee Application
+**Video Rental Store Employee Application**
 
 ## Table of Contents
 * [Demo](#demo)
@@ -9,7 +9,7 @@
 * [Author](#author)
 
 ## Demo
-[App demo at Azure App Service](https://vidly20221108140840.azurewebsites.net/)
+>[App demo at Azure App Service](https://vidly20221108140840.azurewebsites.net/)
 
 ## General information
 This project has been created following online course The Complete ASP.NET MVC Course by Mosh Hamedani on Udemy in order to get a first grip on that technology.
