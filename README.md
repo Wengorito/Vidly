@@ -21,7 +21,7 @@ Technologies, frameworks, NuGet third parties' libraries/plugins etc.
 
 ### Back-end
 - ASP.NET MVC 5
-- DB: local SQL Server
+- DB: SQL Server
 - ORM: Entity Framework 6
 - REST API
 - AutoMapper: a simple little library built to solve a deceptively complex problem - getting rid of code that mapped one object to another
