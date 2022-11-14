@@ -13,7 +13,7 @@
 
 ## General information
 This project has been created following online course The Complete ASP.NET MVC Course by Mosh Hamedani on Udemy in order to get a first grip on that technology.
-It provides basic functionality for a rental store staff, including regular staff members and managers. Basic third-party sign-on is available. 
+It provides basic functionality for the rental store staff, differentiating between regular staff members and store managers. Basic third-party sign-on is available. 
 It still misses few features and unit tests, but is kept deployment-ready.
 
 ## Technologies used
@@ -21,13 +21,13 @@ Technologies, frameworks, NuGet third parties' libraries/plugins etc.
 
 ### Back-end
 - ASP.NET MVC 5
+- REST API
 - DB: SQL Server
 - ORM: Entity Framework 6
-- REST API
-- AutoMapper: a simple little library built to solve a deceptively complex problem - getting rid of code that mapped one object to another
-- Validation: on the client side
+- AutoMapper
 - Anti-forgery Tokens
-- Authentication: via attributes
+- Validation: on the client side
+- Authentication: through attributes
 
 ### Front-end
 - Razor pages
@@ -38,7 +38,6 @@ Technologies, frameworks, NuGet third parties' libraries/plugins etc.
 - Bootswatch: free themes for Bootstrap (Lumen)
 - DataTables: a plug-in for the jQuery Javascript library. It is a highly flexible tool, built upon the foundations of progressive enhancement, that adds all of these advanced features to any HTML table
 - Typeahead.js: flexible JavaScript library that provides a strong foundation for building robust typeaheads
-- Bootbox.js: a small JavaScript library which allows you to create programmatic dialog boxes using Bootstrap modals, without having to worry about creating, managing, or removing any of the required DOM elements or JavaScript event handlers
 - toastr: a Javascript library for non-blocking notifications.
 
 ### Unit tests
